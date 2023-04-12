@@ -5,7 +5,7 @@ import React from "react";
 function Separator() {
   const style = {
     borderBottom: '2px solid black',
-    margin: '0rem 10% 0 10%'
+    margin: '0rem 3% 0 3%'
   };
 
   return <div style={style} />;

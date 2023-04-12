@@ -1,9 +1,15 @@
 import React from "react";
 import styled from "styled-components";
 
-const PromptTextArea = ({ title, placeholder, value, onChange, onSubmit }) => {
-//   const [inputValue, setInputValue] = useState("");
-
+// const PromptTextArea = ({
+//   title,
+//   placeholder,
+//   value,
+//   onChange,
+//   onSubmit,
+//   props,
+// }) => {
+const PromptTextArea = (props) => {
   const Container = styled.div`
     display: flex;
     flex-direction: column;
@@ -17,14 +23,15 @@ const PromptTextArea = ({ title, placeholder, value, onChange, onSubmit }) => {
     padding: 0.5rem;
     margin: 1rem;
     resize: none;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
     border-radius: 0.5rem;
     border-width: 0;
-    background-color: #f5f5f5;
+    background-color: #e0e0e0;
   `;
 
-//   const handleInputChange = (event) => {
-//     setInputValue(event.target.value);
-//   };
+  //   const handleInputChange = (event) => {
+  //     setInputValue(event.target.value);
+  //   };
 
   const sendToBackend = (textPrompt) => {
     const requestOptions = {
@@ -43,7 +50,7 @@ const PromptTextArea = ({ title, placeholder, value, onChange, onSubmit }) => {
   };
 
   const handleKeyDown = (event) => {
-    if (event.keyCode === 13 ) {
+    if (event.keyCode === 13) {
       // Enter key was pressed
       sendToBackend(event.target.value);
       event.preventDefault();
@@ -52,11 +59,10 @@ const PromptTextArea = ({ title, placeholder, value, onChange, onSubmit }) => {
 
   return (
     <Container>
-        <p>Input:</p>
       <TextArea
-        placeholder={placeholder}
-        value={value}
-        onChange={onChange}
+        placeholder={props.placeholder}
+        // value={value}
+        // onChange={onChange}
         onKeyDown={handleKeyDown}
       />
     </Container>

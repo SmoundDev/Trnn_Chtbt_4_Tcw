@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-const Feedback = () => {
+const Feedback = (__feedbackMessage) => {
   const [feedback, setFeedback] = useState(null);
 
   const handleFeedbackClick = (feedbackValue) => {
@@ -23,11 +23,11 @@ const Feedback = () => {
 
   return (
     <div>
-      <h2>Feedback</h2>
       <div>
-        <div>¿Esta respuesta fue útil?</div>
+        <div>¿Esta respuesta fue útil?
         <button onClick={() => handleFeedbackClick('positive')}><span role="img" aria-label="thumbs-up">👍</span></button>
         <button onClick={() => handleFeedbackClick('negative')}><span role="img" aria-label="thumbs-down">👎</span></button>
+        </div>
       </div>
       {feedback && (
         <div>

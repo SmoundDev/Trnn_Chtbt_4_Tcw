@@ -1,5 +1,13 @@
-.App {
+.AppRectangle {
   text-align: center;
+  width: 50%;
+  height: 10rem;
+  padding: 0.5rem;
+  margin: 1rem;
+  resize: none;
+  border-radius: 0.5rem;
+  border-width: 0;
+  background-color: #b52e2e;
 }
 
 .App-logo {
