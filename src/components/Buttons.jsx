@@ -58,7 +58,6 @@ const ColorButton = (props) => {
             1,
             "Es turno del asistente a realizar preguntas",
             "Por favor, respondalas coherentemente"
-
           )
         }
         active={activeButtonIndex === 1}
@@ -69,7 +68,11 @@ const ColorButton = (props) => {
       <Button
         id="btn3"
         onClick={() =>
-          handleButtonClick(2, "Escriba palabras tecnicas relacionadas")
+          handleButtonClick(
+            2,
+            "Escriba palabras tecnicas relacionadas a la reparación",
+            "Para este proceso el asistente no dará respuesta"
+          )
         }
         active={activeButtonIndex === 2}
       >
@@ -79,7 +82,11 @@ const ColorButton = (props) => {
       <Button
         id="btn4"
         onClick={() =>
-          handleButtonClick(3, "Escriba palabras que no tengan relación")
+          handleButtonClick(
+            3,
+            "Escriba palabras que no tengan relación",
+            "Para este proceso el asistente no dará respuesta"
+          )
         }
         active={activeButtonIndex === 3}
       >

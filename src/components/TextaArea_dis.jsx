@@ -48,7 +48,7 @@ const OutputTextArea = (props,{ title, disabled, value }) => {
 
   return (
     <Container>
-      <TextArea placeholder={props.placeholder} onKeyDown={handleKeyDown} disabled={disabled} />
+      <TextArea id="txtOutput" placeholder={props.placeholder} onKeyDown={handleKeyDown} disabled={disabled} />
       <br></br>
 
       <Feedback></Feedback>

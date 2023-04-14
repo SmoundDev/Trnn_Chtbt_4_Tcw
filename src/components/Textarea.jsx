@@ -32,6 +32,7 @@ const PromptTextArea = (props) => {
   //   const handleInputChange = (event) => {
   //     setInputValue(event.target.value);
   //   };
+  const result = document.querySelector('#txtOutput');
 
   const sendToBackend = (textPrompt) => {
     const requestOptions = {
@@ -45,7 +46,8 @@ const PromptTextArea = (props) => {
     })
       .then((response) => response.json())
       .then((data) => {
-        console.log(data);
+        console.log("respuesta del server:" + data.message);
+        result.innerHTML = data.message;
       });
   };
 
