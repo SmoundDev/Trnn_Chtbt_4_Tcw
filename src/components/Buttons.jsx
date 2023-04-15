@@ -29,9 +29,11 @@ const Button = styled.button`
 
 const ColorButton = (props) => {
   const [activeButtonIndex, setActiveButtonIndex] = useState(0);
+  const [tipoEnt, setTipoEnt] = useState("p");
 
-  const handleButtonClick = (buttonIndex, _placeholder, _placeholderDis) => {
+  const handleButtonClick = (buttonIndex, _placeholder, _placeholderDis,tipo) => {
     setActiveButtonIndex(buttonIndex);
+    setTipoEnt(tipo)
     props.onButtonClick(buttonIndex, _placeholder, _placeholderDis);
   };
 
@@ -43,7 +45,8 @@ const ColorButton = (props) => {
           handleButtonClick(
             0,
             "Realice preguntas tecnicas",
-            "Después de recibir respuesta, por favor, califiquela"
+            "Después de recibir respuesta, por favor, califiquela",
+            "p"
           )
         }
         active={activeButtonIndex === 0}
@@ -57,7 +60,8 @@ const ColorButton = (props) => {
           handleButtonClick(
             1,
             "Es turno del asistente a realizar preguntas",
-            "Por favor, respondalas coherentemente"
+            "Por favor, respondalas coherentemente",
+            "r"
           )
         }
         active={activeButtonIndex === 1}
@@ -71,7 +75,8 @@ const ColorButton = (props) => {
           handleButtonClick(
             2,
             "Escriba palabras tecnicas relacionadas a la reparación",
-            "Para este proceso el asistente no dará respuesta"
+            "Para este proceso el asistente no dará respuesta",
+            "rw"
           )
         }
         active={activeButtonIndex === 2}
@@ -85,7 +90,8 @@ const ColorButton = (props) => {
           handleButtonClick(
             3,
             "Escriba palabras que no tengan relación",
-            "Para este proceso el asistente no dará respuesta"
+            "Para este proceso el asistente no dará respuesta",
+            "nrw"
           )
         }
         active={activeButtonIndex === 3}
@@ -99,6 +105,8 @@ const ColorButton = (props) => {
       >
         P. No Permitidas
       </Button> */}
+      <br />
+      <p id="selectedEnt">{tipoEnt}</p>
     </Container>
   );
 };

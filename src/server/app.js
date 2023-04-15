@@ -1,7 +1,10 @@
-const express = require("express");
-const app = express();
 const port = process.env.PORT || 3001;
 const cors = require("cors");
+
+const express = require("express");
+const axios = require("axios");
+
+const app = express();
 
 app.use(cors());
 
@@ -23,7 +26,27 @@ app.listen(port, () => {
 });
 
 app.post("/api/receive_prompt", (req, res) => {
-  const value = req.body.value;
-  console.log(`Valor recibido: ${value}`);
-  res.send({ message: `Valor recibido (serverside): ${value}` });
+  const _prompt = req.body.prompt;
+  const _tipoent = req.body.tipoent;
+  console.log(`Prompt recibido: ${_prompt}`);
+  console.log(`TipoEnt Elegido: ${_tipoent}`);
+  var response = sendRequestToPy(_prompt, _tipoent);
+  res.send({ message: response });
 });
+
+const sendRequestToPy = (__prompt, __tipoent) => {
+  axios
+    .post("http://localhost:3002/", {
+      prompt: __prompt,
+      tipoent: __tipoent,
+    },)
+    .then(function (response) {
+      // Manejar la respuesta del servidor aquí
+      console.log(response.data);
+      return response.data;
+    })
+    .catch(function (error) {
+      // Manejar los errores aquí
+      console.log(error);
+    });
+};

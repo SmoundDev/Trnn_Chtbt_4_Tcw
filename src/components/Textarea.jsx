@@ -32,13 +32,15 @@ const PromptTextArea = (props) => {
   //   const handleInputChange = (event) => {
   //     setInputValue(event.target.value);
   //   };
-  const result = document.querySelector('#txtOutput');
+  const result = document.querySelector("#txtOutput");
+  const selectedEnt = document.querySelector("#selectedEnt");
 
   const sendToBackend = (textPrompt) => {
+    var entrenamiento = selectedEnt.innerHTML;
     const requestOptions = {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ value: textPrompt }),
+      body: JSON.stringify({ prompt: textPrompt, tipoent: entrenamiento }),
     };
     fetch("http://localhost:3001/api/receive_prompt", {
       ...requestOptions,
