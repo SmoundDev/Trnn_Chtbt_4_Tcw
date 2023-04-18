@@ -44,6 +44,7 @@ const sendRequestToPy = (__prompt, __tipoent) => {
       // Manejar la respuesta del servidor aquí
       console.log(response.data);
       return response.data;
+      
     })
     .catch(function (error) {
       // Manejar los errores aquí

@@ -16,6 +16,8 @@ function App() {
 
   const [disableInput, setDisableInput] = useState(false);
   const [disableOutput, setDisableOutput] = useState(true);
+  const [tipoEnt, setTipoEnt] = useState("p");
+
   //  const [activeButtonIndex, setActiveButtonIndex] = useState(0);
 
   const Container = styled.div`
@@ -54,7 +56,24 @@ function App() {
     padding: 3%;
   `;
 
-  const handleButtonClick = (buttonIndex, text, textDis) => {
+  const TryContainer = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    // // padding: 1rem 20rem;
+    box-shadow: #fff 0px 10px 15px -3px, #009ac1 0px 4px 6px -2px;
+    border-radius:  0.5rem;
+    // border-width: 0;
+    background-color: #009BEE;
+     color: white;
+    // margin: 10%;
+    padding: 2px;
+  `;
+
+  const handleButtonClick = (buttonIndex, text, textDis, _tipoEnt, event) => {
+    setTipoEnt(_tipoEnt);
+    event.preventDefault();
+
     switch (buttonIndex) {
       case 0:
         setPlaceholder(text);
@@ -106,12 +125,14 @@ function App() {
       <ContainerButton>
         <div>
           <ColorButton onButtonClick={handleButtonClick} />
+          <br />
+          <TryContainer>
+            <p id="selectedEnt">{tipoEnt}</p>
+          </TryContainer>
+          <br />
           <PromptTextArea placeholder={placeholder} disabled={disableInput} />
           <Separator></Separator>
-          <OutputTextArea
-            placeholder={placeholderDis}
-            disabled={true}
-          />
+          <OutputTextArea placeholder={placeholderDis} disabled={true} />
         </div>
       </ContainerButton>
     </DivContainer>

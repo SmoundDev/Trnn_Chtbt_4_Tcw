@@ -28,42 +28,54 @@ const Button = styled.button`
 `;
 
 const ColorButton = (props) => {
-  const [activeButtonIndex, setActiveButtonIndex] = useState(0);
-  const [tipoEnt, setTipoEnt] = useState("p");
+  const [activeButtonIndex, setActiveButtonIndex] = useState(null);
 
-  const handleButtonClick = (buttonIndex, _placeholder, _placeholderDis,tipo) => {
+  // const [tipoEnt, setTipoEnt] = useState("p");
+
+  const handleButtonClick = (
+    buttonIndex,
+    _placeholder,
+    _placeholderDis,
+    tipo,
+    event
+  ) => {
+
+    // setTipoEnt(tipo);
     setActiveButtonIndex(buttonIndex);
-    setTipoEnt(tipo)
-    props.onButtonClick(buttonIndex, _placeholder, _placeholderDis);
+    props.onButtonClick(buttonIndex, _placeholder, _placeholderDis,tipo, event);
   };
 
   return (
     <Container>
       <Button
         id="btn1"
-        onClick={() =>
+        onClick={(event) =>
           handleButtonClick(
             0,
             "Realice preguntas tecnicas",
             "Después de recibir respuesta, por favor, califiquela",
-            "p"
+            "p",
+            event
           )
         }
         active={activeButtonIndex === 0}
+        // active={props.active}
       >
         Preguntas
       </Button>
 
       <Button
         id="btn2"
-        onClick={() =>
+        onClick={(event) =>
           handleButtonClick(
             1,
             "Es turno del asistente a realizar preguntas",
             "Por favor, respondalas coherentemente",
-            "r"
+            "r",
+            event
           )
         }
+        // active={props.active}
         active={activeButtonIndex === 1}
       >
         Respuestas
@@ -71,30 +83,34 @@ const ColorButton = (props) => {
 
       <Button
         id="btn3"
-        onClick={() =>
+        onClick={(event) =>
           handleButtonClick(
             2,
             "Escriba palabras tecnicas relacionadas a la reparación",
             "Para este proceso el asistente no dará respuesta",
-            "rw"
+            "rw",
+            event
           )
         }
         active={activeButtonIndex === 2}
+        // active={props.active}
       >
         P. Permitidas
       </Button>
 
       <Button
         id="btn4"
-        onClick={() =>
+        onClick={(event) =>
           handleButtonClick(
             3,
             "Escriba palabras que no tengan relación",
             "Para este proceso el asistente no dará respuesta",
-            "nrw"
+            "nrw",
+            event
           )
         }
         active={activeButtonIndex === 3}
+        // active={props.active}
       >
         P. No Permitidas
       </Button>
@@ -105,8 +121,7 @@ const ColorButton = (props) => {
       >
         P. No Permitidas
       </Button> */}
-      <br />
-      <p id="selectedEnt">{tipoEnt}</p>
+
     </Container>
   );
 };
